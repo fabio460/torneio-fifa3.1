@@ -1,4 +1,5 @@
 import PrivateRouter from './PrivateRouter'
+import SessionProviderApp from './SessionProviderApp'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -17,9 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
         <body className={inter.className}>
-          <PrivateRouter>
+          <SessionProviderApp>
             {children}
-          </PrivateRouter>
+          </SessionProviderApp>
         </body>
     </html>
   )
