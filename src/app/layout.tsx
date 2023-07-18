@@ -1,4 +1,4 @@
-import PrivateRouter from './autenticate/PrivateRouter'
+import PrivateRouter from './PrivateRouter'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
