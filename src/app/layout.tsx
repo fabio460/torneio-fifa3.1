@@ -19,7 +19,9 @@ export default function RootLayout({
     <html lang="en">
         <body className={inter.className}>
           <SessionProviderApp>
-            {children}
+            <PrivateRouter>
+              {children}
+            </PrivateRouter>
           </SessionProviderApp>
         </body>
     </html>

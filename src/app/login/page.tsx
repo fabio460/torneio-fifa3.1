@@ -33,7 +33,8 @@ function Copyright(props: any) {
 const theme = createTheme();
 import {useRouter} from 'next/navigation';
 import CarregandoBtn from '@/carregandoBtn';
-export default function TelaDeLogin() {
+import { signIn } from 'next-auth/react';
+export default function Login() {
   const [dadosDoUsuario, setDadosDoUsuario] = React.useState<any>()
   const [carregando, setCarregando] = React.useState(false)
   const [error, setError] = React.useState(false)
@@ -45,7 +46,12 @@ export default function TelaDeLogin() {
     const data = new FormData(event.currentTarget);
     let email = data.get('email')?.toString() || ''
     let senha = data.get('password')?.toString() || ''
-
+    signIn("credentials",{
+      username:email,
+      password:senha,
+      callbackUrl:"/",
+      redirect:true
+    })
   };  
   
   return (

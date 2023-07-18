@@ -11,7 +11,6 @@ export default function TelaDeElenco() {
   return (
     <div>
         elencos
-       
     </div>
   )
 }
