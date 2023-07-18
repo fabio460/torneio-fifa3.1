@@ -13,7 +13,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { signIn } from './signIn';
+
 
 
 function Copyright(props: any) {
@@ -46,16 +46,6 @@ export default function TelaDeLogin() {
     let email = data.get('email')?.toString() || ''
     let senha = data.get('password')?.toString() || ''
 
-    const response =await signIn(email,senha)
-    if (response.token) {
-      router.push('/')
-      setTimeout(() => {
-        window.location.reload()
-      }, 500);
-    }else{
-      setCarregando(false)
-      setError(true)
-    }
   };  
   
   return (
