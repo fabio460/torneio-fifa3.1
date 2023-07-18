@@ -10,7 +10,7 @@ export default function TelaDeElenco() {
   return (
     <div>
         elencos
-        <Button onClick={routerClick}>Voltar</Button>
+       
     </div>
   )
 }
