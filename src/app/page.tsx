@@ -2,10 +2,13 @@
 import {useSession} from 'next-auth/react'
 import BtnLogin from './BtnLogin'
 export default function Home() {
-  const {data} = useSession()
+  const {data,update} = useSession()
   return (
     <div>
-      home 
+       <div>
+         Usuario {data?.user?.name} logado 
+       </div>
+
       <BtnLogin/>
     </div>
   )
