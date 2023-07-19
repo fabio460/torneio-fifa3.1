@@ -8,7 +8,7 @@ export default function Home() {
        <div>
          Usuario {data?.user?.name} logado 
        </div>
-
+       
       <BtnLogin/>
     </div>
   )

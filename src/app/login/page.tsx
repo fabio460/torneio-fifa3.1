@@ -51,6 +51,11 @@ export default function Login() {
       return setError(true)
     }
 
+    if (!email || !senha) {
+      setCarregando(false)
+      return setError(true)
+    }
+
     signIn("credentials",{
       username:email,
       password:senha,
