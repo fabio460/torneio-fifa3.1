@@ -1,5 +1,4 @@
 import { useSession, signIn, signOut } from "next-auth/react"
-
 export default function BtnLogin() {
   const { data: session } = useSession()
   if (session) {

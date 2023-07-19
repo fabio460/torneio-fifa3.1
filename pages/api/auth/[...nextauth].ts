@@ -17,7 +17,8 @@ export default NextAuth({
           const usuario = {
             email:user.auth.email,
             name:user.auth.nome,
-            id:user.auth.id
+            id:user.auth.id,
+            image:user.auth.id
           }
           if (user.token) {
             return usuario

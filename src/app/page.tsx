@@ -1,15 +1,10 @@
 "use client"
 import {useSession} from 'next-auth/react'
-import BtnLogin from './BtnLogin'
+import TelaPrincipal from './TelaPrincipal'
 export default function Home() {
-  const {data,update} = useSession()
   return (
     <div>
-       <div>
-         Usuario {data?.user?.email} logado 
-       </div>
-       
-      <BtnLogin/>
+      <TelaPrincipal/>
     </div>
   )
 }
