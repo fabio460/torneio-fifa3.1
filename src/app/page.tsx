@@ -1,10 +1,15 @@
-"use client"
-import {useSession} from 'next-auth/react'
+
+import {getServerSession } from 'next-auth/next'
 import TelaPrincipal from './TelaPrincipal'
-export default function Home() {
+import { getUserByEmail } from '@/APIs/usuariosApi'
+import { usuarioType } from '@/Types'
+export default async function Home() {
+  const data =await getServerSession()
+  const usuario = await getUserByEmail(data?.user?.email as string)
+  
   return (
     <div>
-      <TelaPrincipal/>
+      <TelaPrincipal usuario={usuario}/>
     </div>
   )
 }

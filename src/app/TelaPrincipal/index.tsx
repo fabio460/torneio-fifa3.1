@@ -1,9 +1,13 @@
+"use client"
 import React from 'react'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import BtnLogin from '../BtnLogin'
 import { useSession, signIn, signOut } from "next-auth/react"
+import CardTorneio from './CardTorneio'
+import { usuarioType } from '@/Types'
+import Main from './Main'
 
 const user = {
   name: 'Tom Cook',
@@ -23,8 +27,9 @@ function classNames(...classes:any[]) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function TelaPrincipal() {
+export default function TelaPrincipal({usuario}:{usuario:usuarioType}) {
     const { data } = useSession()
+    
     const userNavigation = [
       { name: 'Your Profile', href: '#',div:<div>{data?.user?.name}</div> },
       { name: 'Settings', href: '#', div:<div>settings</div> },
@@ -33,14 +38,6 @@ export default function TelaPrincipal() {
     
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-gray-800">
           {({ open }) => (
@@ -195,7 +192,9 @@ export default function TelaPrincipal() {
           </div>
         </header>
         <main>
-          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">{/* Your content */}</div>
+          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <Main/>
+          </div>
         </main>
       </div>
     </>
