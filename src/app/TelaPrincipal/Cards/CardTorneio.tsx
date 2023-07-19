@@ -4,6 +4,8 @@ import ListaDeParticipantes from "../ListaDeParticipantes"
 import SelectTorneio from "../SelectTorneio"
 import ModalCriarParticipantes from "../Modais/ModalCriarParticipantes"
 import ModalAdicionarParticipantes from "../Modais/modalAdicionarParticipantes"
+import ModalCriarTorneio from "../Modais/modalCriarTorneio"
+import ModalAtualizarTorneio from "../Modais/modalAtualizarTorneio"
 
 
 export default function CardTorneio() {
@@ -14,6 +16,8 @@ export default function CardTorneio() {
        <ModalCriarParticipantes/>
        <ListaDeParticipantes/>
        <ModalAdicionarParticipantes/>
+       <ModalCriarTorneio/>
+       
     </div>
   )
 }
