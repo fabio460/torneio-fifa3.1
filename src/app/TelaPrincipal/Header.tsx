@@ -147,11 +147,11 @@ function Header() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting, key) => (
-                <MenuItem key={key} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center" component={"div"}>{setting}</Typography>
+              
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center" component={"div"}>sair</Typography>
                 </MenuItem>
-              ))}
+              
             </Menu>
           </Box>
         </Toolbar>
