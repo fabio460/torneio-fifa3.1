@@ -1,7 +1,7 @@
 import { torneioType } from "@/Types"
 import { useAppSelector } from "@/redux/hookes"
 
-export const listaDeParticipantesDoTorneioSelecionado = ()=>{
+export const ListaDeParticipantesDoTorneioSelecionado = ()=>{
     const usuario = useAppSelector(state=>state.usuarioReducer.usuario)  
     const idTorneioSelecionado = useAppSelector(state=>state.torneioSelecionadoReducer.idTorneioSelecionado)
     const list = usuario?.torneio.filter((e)=>{
@@ -17,7 +17,7 @@ export const listaDeParticipantesDoTorneioSelecionado = ()=>{
 }
 
 export const getParticipantes = (id:string)=>{
-    const torneio = listaDeParticipantesDoTorneioSelecionado()
+    const torneio = ListaDeParticipantesDoTorneioSelecionado()
     return torneio?.map(e=>{
         if (!id) {
             return null

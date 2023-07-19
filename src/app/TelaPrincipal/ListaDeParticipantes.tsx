@@ -1,9 +1,9 @@
 import React from 'react'
-import { listaDeParticipantesDoTorneioSelecionado } from '../services'
+import { ListaDeParticipantesDoTorneioSelecionado } from '../services'
 import { Checkbox } from '@mui/material'
 
 export default function ListaDeParticipantes() {
-    var listaParticipantes = listaDeParticipantesDoTorneioSelecionado()
+    var listaParticipantes = ListaDeParticipantesDoTorneioSelecionado()
 
   return (
     <div>
