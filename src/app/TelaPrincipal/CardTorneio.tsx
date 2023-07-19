@@ -1,5 +1,4 @@
-import { Card, Checkbox } from "@mui/material"
-import { ListaDeParticipantesDoTorneioSelecionado } from "../services"
+
 import styled from "./telaPrincipalStyle.module.css"
 import ListaDeParticipantes from "./ListaDeParticipantes"
 import SelectTorneio from "./SelectTorneio"
