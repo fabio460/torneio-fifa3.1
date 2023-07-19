@@ -8,6 +8,7 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Header from './Header';
+import { usuarioType } from '@/Types';
 
 interface Props {
   /**
@@ -34,11 +35,11 @@ function ElevationScroll(props: Props) {
   });
 }
 
-export default function ElevateAppBar(props: Props) {
+export default function TelaPrincipal({usuario}:{usuario:usuarioType}) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <ElevationScroll {...props}>
+      <ElevationScroll >
          <Header/>
       </ElevationScroll>
       <Toolbar />
