@@ -12,6 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import BtnLogin from '../BtnLogin';
+import { useSession } from 'next-auth/react';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'sair'];
@@ -34,7 +36,7 @@ function Header() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+  const {data} = useSession()
   return (
     <AppBar position="fixed">
       <Container maxWidth="xl">
@@ -147,14 +149,12 @@ function Header() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center" component={"div"}>Fabio</Typography>
+                  <Typography textAlign="center" component={"div"}>{data?.user?.name}</Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center" component={"div"}>sair</Typography>
+                  <Typography textAlign="center" component={"div"}><BtnLogin/></Typography>
                 </MenuItem>
-              
             </Menu>
           </Box>
         </Toolbar>

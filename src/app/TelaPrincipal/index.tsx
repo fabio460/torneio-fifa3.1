@@ -1,6 +1,6 @@
 "use client"
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
+import style from './telaPrincipalStyle.module.css'
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,21 +9,21 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Header from './Header';
 import { usuarioType } from '@/Types';
+import { Main } from 'next/document';
+import CardTorneio from './Cards/CardTorneio';
+import CardPremiacao from './Cards/CardPremiacao';
+import CardParticipantes from './Cards/CardParticipantes';
+import { useSession } from 'next-auth/react';
+import { useAppDispatch } from '@/redux/hookes';
+import { getUsuario } from '@/redux/reducers/usuarioReducer';
 
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window?: () => Window;
   children: React.ReactElement;
 }
 
 function ElevationScroll(props: Props) {
   const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
@@ -36,6 +36,11 @@ function ElevationScroll(props: Props) {
 }
 
 export default function TelaPrincipal({usuario}:{usuario:usuarioType}) {
+     const { data } = useSession()
+     const dispatch = useAppDispatch()
+     React.useEffect(()=>{
+       dispatch(getUsuario(usuario))
+     },[])
   return (
     <React.Fragment>
       <CssBaseline />
@@ -45,14 +50,13 @@ export default function TelaPrincipal({usuario}:{usuario:usuarioType}) {
       <Toolbar />
       <Container>
         <Box sx={{ my: 2 }}>
-          {[...new Array(32)]
-            .map(
-              () => `Cras mattis consectetur purus sit amet fermentum.
-Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-            )
-            .join('\n')}
+          <div className={style.mainUp}>
+            <CardTorneio/>
+            <CardPremiacao/>
+           </div>
+           <div>
+            <CardParticipantes/>
+           </div>
         </Box>
       </Container>
     </React.Fragment>

@@ -1,7 +1,7 @@
 import React from 'react'
-import CardParticipantes from './CardParticipantes'
-import CardTorneio from './CardTorneio'
-import CardPremiacao from './CardPremiacao'
+import CardParticipantes from './Cards/CardParticipantes'
+import CardTorneio from './Cards/CardTorneio'
+import CardPremiacao from './Cards/CardPremiacao'
 import style from './telaPrincipalStyle.module.css'
 export default function Main() {
   return (

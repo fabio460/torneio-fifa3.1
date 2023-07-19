@@ -32,8 +32,8 @@ export default function SelectTorneio() {
 },[idSelecionado])
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 120 }} size='small'>
-        <InputLabel id="demo-controlled-open-select-label">Torneio</InputLabel>
+      <FormControl sx={{ mb: 1, minWidth: 120, width:"100%" }} size='small'>
+        <InputLabel id="demo-controlled-open-select-label">Selecione o torneio</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
@@ -41,7 +41,7 @@ export default function SelectTorneio() {
           onClose={handleClose}
           onOpen={handleOpen}
           value={idSelecionado}
-          label="Torneio"
+          label="Selecione o torneio"
           onChange={handleChange}
         >
          {
