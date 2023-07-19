@@ -13,13 +13,16 @@ export default NextAuth({
           password: { label: "Password", type: "password" }
         },
         async authorize(credentials, req) {
-          const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
-    
-          if (user) {
-            return user
+          const user = await loginApi(credentials?.username as string, credentials?.password as string)
+          const usuario = {
+            email:user.auth.email,
+            name:user.auth.nome,
+            id:user.auth.id
+          }
+          if (user.token) {
+            return usuario
           } else {
             return null
-    
           }
         },
         
