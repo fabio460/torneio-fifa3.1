@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
 const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', <div>Logout</div>];
+const settings = ['Profile', 'Account', 'Dashboard', 'sair'];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -148,6 +148,9 @@ function Header() {
               onClose={handleCloseUserMenu}
             >
               
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center" component={"div"}>Fabio</Typography>
+                </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography textAlign="center" component={"div"}>sair</Typography>
                 </MenuItem>
