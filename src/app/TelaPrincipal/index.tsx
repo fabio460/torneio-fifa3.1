@@ -2,14 +2,12 @@
 import * as React from 'react';
 import style from './telaPrincipalStyle.module.css'
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import CssBaseline from '@mui/material/CssBaseline';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Header from './Header';
 import { usuarioType } from '@/Types';
-import { Main } from 'next/document';
 import CardTorneio from './Cards/CardTorneio';
 import CardPremiacao from './Cards/CardPremiacao';
 import CardParticipantes from './Cards/CardParticipantes';
@@ -40,7 +38,7 @@ export default function TelaPrincipal({usuario}:{usuario:usuarioType}) {
      const dispatch = useAppDispatch()
      React.useEffect(()=>{
        dispatch(getUsuario(usuario))
-     },[])
+     },[dispatch, usuario])
   return (
     <React.Fragment>
       <CssBaseline />
