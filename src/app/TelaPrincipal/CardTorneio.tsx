@@ -1,12 +1,16 @@
+import { Card, Checkbox } from "@mui/material"
+import { listaDeParticipantesDoTorneioSelecionado } from "../services"
+import styled from "./telaPrincipalStyle.module.css"
+import ListaDeParticipantes from "./ListaDeParticipantes"
+import SelectTorneio from "./SelectTorneio"
 
-import { torneioType } from '@/Types'
-import React from 'react'
 
-export default  function CardTorneio() {
+export default function CardTorneio() {
+
   return (
-    <div>
-        CardParticipantes
-    
+    <div className={styled.cardTorneioMain}>
+       <SelectTorneio/>
+       <ListaDeParticipantes/>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import SessionProviderApp from './SessionProviderApp'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { ChakraProvider } from '@chakra-ui/react'
+import ProviderRedux from '@/redux/ProviderRedux'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -20,7 +21,9 @@ export default function RootLayout({
         <body className={inter.className}>
           <SessionProviderApp>
             <PrivateRouter>
-              {children}
+              <ProviderRedux>
+                {children}
+              </ProviderRedux>
             </PrivateRouter>
           </SessionProviderApp>
         </body>

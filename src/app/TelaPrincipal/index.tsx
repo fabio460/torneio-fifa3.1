@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -8,6 +8,8 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import CardTorneio from './CardTorneio'
 import { usuarioType } from '@/Types'
 import Main from './Main'
+import { useAppDispatch } from '@/redux/hookes'
+import { getUsuario } from '@/redux/reducers/usuarioReducer'
 
 const user = {
   name: 'Tom Cook',
@@ -29,7 +31,10 @@ function classNames(...classes:any[]) {
 
 export default function TelaPrincipal({usuario}:{usuario:usuarioType}) {
     const { data } = useSession()
-    
+    const dispatch = useAppDispatch()
+    useEffect(()=>{
+      dispatch(getUsuario(usuario))
+    },[])
     const userNavigation = [
       { name: 'Your Profile', href: '#',div:<div>{data?.user?.name}</div> },
       { name: 'Settings', href: '#', div:<div>settings</div> },
