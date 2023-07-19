@@ -10,10 +10,11 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { IconButton, TextField } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { atualizaTorneioApi } from '@/APIs/torneioApi';
+import { useAppSelector } from '@/redux/hookes';
 
 
 
-export default function ModalAtualizarTorneio({torneio}:{torneio:torneioType[] | undefined}) {
+export default function ModalAtualizarTorneio() {
   const [open, setOpen] = React.useState(false);
   const [Nome, setNome] = React.useState('');
   const [nomeDoParticipante, setNomeDoParticipante] = useState('')
@@ -22,7 +23,7 @@ export default function ModalAtualizarTorneio({torneio}:{torneio:torneioType[] |
     setNome(event.target.value);
     setId(id)
   };
-  const usuario:usuarioType = useSelector((state:any)=>state.usuarioReducer.usuario)
+  const torneios = useAppSelector(state=>state.usuarioReducer.usuario?.torneio)
  
   const handleClickOpen = () => {
     setOpen(true);
@@ -59,7 +60,7 @@ export default function ModalAtualizarTorneio({torneio}:{torneio:torneioType[] |
         </DialogTitle>
         <DialogContent>
            {
-            torneio?.map((t, key)=>{
+            torneios?.map((t, key)=>{
                return(
                 <div key={key} style={{margin:10}}>
                   <TextField 
