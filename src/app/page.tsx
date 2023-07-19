@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
        <div>
-         Usuario {data?.user?.name} logado 
+         Usuario {data?.user?.email} logado 
        </div>
        
       <BtnLogin/>

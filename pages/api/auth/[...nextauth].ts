@@ -5,7 +5,7 @@ import { loginApi } from "@/APIs/authApi";
 
 export default NextAuth({
     providers: [
-      process.env.VERCEL_ENV === "preview" ?
+ 
       CredentialsProvider({
         name: "Credentials",
         credentials: {
@@ -26,27 +26,7 @@ export default NextAuth({
           }
         },
         
-      }):
-      CredentialsProvider({
-        name: "Credentials",
-        credentials: {
-          username: { label: "Username", type: "text", placeholder: "jsmith" },
-          password: { label: "Password", type: "password" }
-        },
-        async authorize(credentials, req) {
-          const user = await loginApi(credentials?.username as string, credentials?.password as string)
-          const usuario = {
-            email:user.auth.email,
-            name:user.auth.nome,
-            id:user.auth.id
-          }
-          if (user.token) {
-            return usuario
-          } else {
-            return null
-          }
-        },
-      }),
+      })
     ],
     pages:{
       signIn:"/login"

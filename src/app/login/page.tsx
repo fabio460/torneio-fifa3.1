@@ -1,5 +1,5 @@
 'use client'
-import React,{useEffect, useState} from 'react';
+import React,{useEffect} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -37,32 +37,27 @@ import { signIn } from 'next-auth/react';
 import { loginApi } from '@/APIs/authApi';
 export default function Login() {
   const [dadosDoUsuario, setDadosDoUsuario] = React.useState<any>()
-  const [email, setemail] = useState<string>()
-  const [senha, setsenha] = useState<string>()
   const [carregando, setCarregando] = React.useState(false)
   const [error, setError] = React.useState(false)
-  
+
   const router = useRouter();
-  async function handleSubmit(){
+  const handleSubmit =async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setCarregando(true)
+    const data = new FormData(event.currentTarget);
+    let email = data.get('email')?.toString() || ''
+    let senha = data.get('password')?.toString() || ''
     const loginRes = await loginApi(email as string,senha as string)
     if (!loginRes.token) {
       setCarregando(false)
       return setError(true)
     }
-
-    if (!email || !senha) {
-      setCarregando(false)
-      return setError(true)
-    }
-
-    signIn("credentials",{
+    const s = signIn("credentials",{
       username:email,
       password:senha,
       callbackUrl:"/",
       redirect:true,
     })
-    
   };  
   
   return (
@@ -100,7 +95,7 @@ export default function Login() {
                 <Typography component="h1" variant="h5">
                   Entrar
                 </Typography>
-                <Box component="div"  sx={{ mt: 1 }}>
+                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                 <TextField
                     margin="normal"
                     required
@@ -111,7 +106,6 @@ export default function Login() {
                     autoComplete="email"
                     autoFocus
                     error={error}
-                    onChange={e=>setemail(e.target.value)}
                 />
                 <TextField
                     margin="normal"
@@ -123,8 +117,6 @@ export default function Login() {
                     id="password"
                     autoComplete="current-password"
                     error={error}
-                    onChange={e=>setsenha(e.target.value)}
-
                 />
                 <FormControlLabel
                     control={<Checkbox value="remember" color="primary" />}
@@ -145,11 +137,10 @@ export default function Login() {
                       </Button>
                     </div>:
                     <Button
-                        
+                        type="submit"
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
-                        onClick={()=> handleSubmit()}
                     >
                       Entrar
                     </Button>
