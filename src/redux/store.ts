@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import usuarioReducer from './reducers/usuarioReducer'
 import torneioSelecionadoReducer from './reducers/torneioSelecionadoReducer'
+import participantesCheckedReducer from './reducers/participantesCheckedReducer'
 export const store = configureStore({
   reducer: {
+    participantesCheckedReducer,
     torneioSelecionadoReducer,
     usuarioReducer,
   },

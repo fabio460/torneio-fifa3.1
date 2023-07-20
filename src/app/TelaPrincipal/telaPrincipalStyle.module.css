@@ -7,7 +7,7 @@
 .cardTorneioMain{
     background-color: white;
     border-radius: 2px;
-    padding: 0px 3%;
+    padding: 3%;
     padding-top: 3%;
 }
 @media (max-width:1100px) {

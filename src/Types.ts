@@ -39,9 +39,9 @@ export interface torneioType {
     nome:string,
     torneio:torneioType[]
  }
- export type chekedType = {
-   object:participantesType,
-   check:boolean
+ export type checkedTypes = {
+   participante:participantesType,
+   checked:boolean
  }
  export type selecionadosType={
     primeiro:{
