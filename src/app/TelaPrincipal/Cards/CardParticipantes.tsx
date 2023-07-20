@@ -41,7 +41,11 @@ const posts = [
                   <div style={{display:"flex"}}>
                     <img src={post.emblemaDoTime} alt="" className="h-10 w-10 rounded-full bg-gray-50" />
                     <div className="text-sm leading-6 mx-2">
-                  
+                      <p className="font-semibold text-gray-900">
+                        <p>
+                          {post.time}
+                        </p>
+                      </p>
                       <p className="text-gray-600">{post.nome}</p>
                     </div>
                   </div>
