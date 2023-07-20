@@ -40,13 +40,13 @@ export default function TelaPrincipal({usuario}:{usuario:usuarioType}) {
        dispatch(getUsuario(usuario))
      },[dispatch, usuario])
   return (
-    <React.Fragment>
+    <React.Fragment >
       <CssBaseline />
       <ElevationScroll >
          <Header/>
       </ElevationScroll>
       <Toolbar />
-      <Container>
+      <Container >
         <Box sx={{ my: 2 }}>
           <div className={style.mainUp}>
             <CardTorneio/>
