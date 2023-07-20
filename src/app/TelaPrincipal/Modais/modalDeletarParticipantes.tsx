@@ -19,8 +19,7 @@ export default function ModalDeletarParticipantes({elenco}:{elenco:participantes
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value);
   };
-  const usuario:usuarioType = useSelector((state:any)=>state.usuarioReducer.usuario)
-  const torneio = useSelector((state:any)=>state.torneioReducer.torneio)
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
