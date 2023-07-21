@@ -87,7 +87,7 @@ export default function ModalConfirmarPagamentoPremiacao({icone}:{icone:boolean}
   }
 
   const btnPagamentosStyle ={
-    marginRight:"10px",
+    margin:"10px 0px",
     width:"100%",
     "@media (max-width:800px)":{
       marginRight:"0px",

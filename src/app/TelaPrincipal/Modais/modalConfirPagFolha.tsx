@@ -8,6 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useSelector } from 'react-redux';
 import { pagarFolhasApi } from '@/APIs/pagamentosApi';
 import CarregandoBtn from '@/carregandoBtn';
+import { useAppSelector } from '@/redux/hookes';
 
 
 export default function ModalConfirmaPagamentoFolha({icone}:{icone:boolean}) {
@@ -21,7 +22,7 @@ export default function ModalConfirmaPagamentoFolha({icone}:{icone:boolean}) {
     setOpen(false);
   };
 
-  const participantes = useSelector((state:any)=>state.participantesReducer.participantes)
+  const participantes = useAppSelector(state=>state.participantesCheckedReducer.paticipantesChecked)
   const [carregandoFolha, setCarregandoFolha] = React.useState(false)
   const [carregandoPremio, setCarregandoPremio] = React.useState(false)
   const pagarFolha = async()=>{
@@ -50,7 +51,7 @@ export default function ModalConfirmaPagamentoFolha({icone}:{icone:boolean}) {
     }
   }
   const btnPagamentosStyle ={
-     width:"100%", ml:"20px",
+     width:"100%", mt:"0px",
     "@media (max-width:800px)":{
         width:"100%", ml:"0px"
     }
