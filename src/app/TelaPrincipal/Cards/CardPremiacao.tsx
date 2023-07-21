@@ -3,15 +3,59 @@ import styled from "../telaPrincipalStyle.module.css"
 import { useAppSelector } from '@/redux/hookes'
 
 export default function CardPremiacao() {
-  const selecionados = useAppSelector(state=>state.participantesCheckedReducer.paticipantesChecked)
+  const campeoes = useAppSelector(state=>state.colocaçãoReducer.colocacao)
+  const artilheiros = useAppSelector(state=>state.artilheirosReducer.artilheiros)
+  const assistentes = useAppSelector(state=>state.assistentesReducer.assistente)
+
+  console.log(artilheiros?.primeiro)
+  console.log(campeoes?.primeiro)
   return (
     <div className={styled.cardTorneioMain}>
-      CardPremiacao
+      <h2 style={{textAlign:"center"}}>Premiações</h2>
+      <div>
+         Campeão {campeoes?.primeiro?.nome}
+      </div>
+      <div>
+        Segundo  {campeoes?.segundo?.nome}
+      </div>
+      <div>
+        Terceiro  {campeoes?.terceiro?.nome}
+      </div>
+      <div>
+        Quarto  {campeoes?.quarto?.nome}
+      </div>
+      <h2>Artilheiros</h2>
       {
-        selecionados.map((elem, key)=>{
-          return <div key={key}>{elem.participante.nome}</div>
+        artilheiros?.primeiro.map(a=>{
+          return <div>
+            artilheiro {a.jogador.nome} part {a.participante.participante.nome}
+          </div>
         })
       }
+            {
+        artilheiros?.segundo.map(a=>{
+          return <div>
+           vice artilheiro {a.jogador.nome} part {a.participante.participante.nome}
+          </div>
+        })
+      }
+
+     <h2>Assistentes</h2>
+      {
+        assistentes?.primeiro.map(a=>{
+          return <div>
+            assistentes {a.jogador.nome} part {a.participante.participante.nome}
+          </div>
+        })
+      }
+            {
+        assistentes?.segundo.map(a=>{
+          return <div>
+           vice assistentes {a.jogador.nome} part {a.participante.participante.nome}
+          </div>
+        })
+      }
+      
     </div>
   )
 }

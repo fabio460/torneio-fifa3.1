@@ -3,8 +3,14 @@ import usuarioReducer from './reducers/usuarioReducer'
 import torneioSelecionadoReducer from './reducers/torneioSelecionadoReducer'
 import participantesCheckedReducer from './reducers/participantesCheckedReducer'
 import btnVisibleDeleteParticipantesReducer from './reducers/btnVisibleDeleteParticipantesReducer'
+import colocaçãoReducer from './reducers/colocaçãoReducer'
+import artilheirosReducer from './reducers/artilheirosReducer'
+import assistentesReducer from './reducers/assistentesReducer'
 export const store = configureStore({
   reducer: {
+    assistentesReducer,
+    artilheirosReducer,
+    colocaçãoReducer,
     btnVisibleDeleteParticipantesReducer,
     participantesCheckedReducer,
     torneioSelecionadoReducer,

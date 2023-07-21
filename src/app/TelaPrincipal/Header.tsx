@@ -15,6 +15,9 @@ import AdbIcon from '@mui/icons-material/Adb';
 import BtnLogin from '../BtnLogin';
 import { useSession } from 'next-auth/react';
 import VisibleBtnDeletarParticipantes from './visibleBtnDeletarParticipantes';
+import ModalColocacao from './Modais/modaisDeAppBar/modalColocacao';
+import ModalArtilharia from './Modais/modaisDeAppBar/modalArtilharia';
+import ModalAssistencia from './Modais/modaisDeAppBar/modalAssistencia';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'sair'];
@@ -106,9 +109,7 @@ function Header() {
               {/* {pages.map((page) => (
               ))} */}
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    item
-                  </Typography>
+                   <ModalColocacao/>
                 </MenuItem>
             </Menu>
           </Box>
@@ -136,9 +137,21 @@ function Header() {
             ))} */}
               <Button
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'flex' }}
               >
-                item
+                <ModalColocacao/>
+              </Button>
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'flex' }}
+              >
+                <ModalArtilharia/>
+              </Button>
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'flex' }}
+              >
+                <ModalAssistencia/>
               </Button>
           </Box>
 
