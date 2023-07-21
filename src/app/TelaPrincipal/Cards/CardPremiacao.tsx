@@ -7,8 +7,6 @@ export default function CardPremiacao() {
   const artilheiros = useAppSelector(state=>state.artilheirosReducer.artilheiros)
   const assistentes = useAppSelector(state=>state.assistentesReducer.assistente)
 
-  console.log(artilheiros?.primeiro)
-  console.log(campeoes?.primeiro)
   return (
     <div className={styled.cardTorneioMain}>
       <h2 style={{textAlign:"center"}}>Premiações</h2>
@@ -26,15 +24,15 @@ export default function CardPremiacao() {
       </div>
       <h2>Artilheiros</h2>
       {
-        artilheiros?.primeiro.map(a=>{
-          return <div>
+        artilheiros?.primeiro.map((a, key)=>{
+          return <div key={key}>
             artilheiro {a.jogador.nome} part {a.participante.participante.nome}
           </div>
         })
       }
             {
-        artilheiros?.segundo.map(a=>{
-          return <div>
+        artilheiros?.segundo.map((a, key)=>{
+          return <div  key={key}>
            vice artilheiro {a.jogador.nome} part {a.participante.participante.nome}
           </div>
         })
@@ -42,15 +40,15 @@ export default function CardPremiacao() {
 
      <h2>Assistentes</h2>
       {
-        assistentes?.primeiro.map(a=>{
-          return <div>
+        assistentes?.primeiro.map((a, key)=>{
+          return <div  key={key}>
             assistentes {a.jogador.nome} part {a.participante.participante.nome}
           </div>
         })
       }
             {
-        assistentes?.segundo.map(a=>{
-          return <div>
+        assistentes?.segundo.map((a, key)=>{
+          return <div  key={key}>
            vice assistentes {a.jogador.nome} part {a.participante.participante.nome}
           </div>
         })

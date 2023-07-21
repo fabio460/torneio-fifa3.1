@@ -159,7 +159,7 @@ export default function ModalDadosDoJogo() {
           <DialogContentText id="alert-dialog-description" 
             sx={{width:"100%"}}>
              {participantes?.map((elem:any,key)=>{
-                return <div>
+                return <div  key={key}>
                   <h4>{elem.participante.nome}</h4>
                   <div style={{display:"flex", justifyContent:"center"}}>
                     <TextField 
