@@ -12,41 +12,10 @@ import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import Image from 'next/image'
 export default function CardPremiacao() {
-  const participantes = useAppSelector(state=>state.participantesCheckedReducer.paticipantesChecked)
   const colocacao = useAppSelector(state=>state.colocaçãoReducer.colocacao)
   const artilheiros = useAppSelector(state=>state.artilheirosReducer.artilheiros)
   const assistentes = useAppSelector(state=>state.assistentesReducer.assistente)
   const dados = useAppSelector(state=>state.golsEmpVitoriasReducer.golsEmpVitorias)
-
-  
-  const StyledBadge = styled(Badge)(({ theme }) => ({
-    '& .MuiBadge-badge': {
-      backgroundColor: '#44b700',
-      color: '#44b700',
-      boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-      '&::after': {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        borderRadius: '50%',
-        animation: 'ripple 1.2s infinite ease-in-out',
-        border: '1px solid currentColor',
-        content: '""',
-      },
-    },
-    '@keyframes ripple': {
-      '0%': {
-        transform: 'scale(.8)',
-        opacity: 1,
-      },
-      '100%': {
-        transform: 'scale(2.4)',
-        opacity: 0,
-      },
-    },
-  }));
   
   const SmallAvatar = styled(Avatar)(({ theme }) => ({
     width: 22,
@@ -78,7 +47,10 @@ export default function CardPremiacao() {
             </div>
           </div>
         }
-        <Divider/>
+        {
+          colocacao?.primeiro?.nome && 
+          <Divider/>
+        }
         {
           colocacao?.segundo?.nome && 
           <div>
@@ -99,7 +71,10 @@ export default function CardPremiacao() {
             </div>
           </div>
         }
-         <Divider/>
+        {
+           colocacao?.segundo?.nome && 
+           <Divider/>
+        }
         {
           colocacao?.terceiro?.nome && 
           <div>
@@ -120,7 +95,10 @@ export default function CardPremiacao() {
             </div>
           </div>
         }
-         <Divider/>
+        {
+          colocacao?.terceiro?.nome && 
+          <Divider/>
+        }
         {
           colocacao?.quarto?.nome && 
           <div>
@@ -175,7 +153,10 @@ export default function CardPremiacao() {
              </div>
           </div>
         }
-        <Divider/>
+        {
+          artilheiros?.primeiro[0] && 
+          <Divider/>
+        }
         {
           artilheiros?.segundo[0] && 
           <div>
@@ -209,7 +190,10 @@ export default function CardPremiacao() {
              </div>
           </div>
         }
-        <Divider/>
+        {
+          artilheiros?.segundo[0] &&
+          <Divider/>
+        }
         {
           artilheiros?.terceiro[0] && 
           <div>
@@ -243,9 +227,12 @@ export default function CardPremiacao() {
              </div>
           </div>
         }
-        <Divider/>
         {
-          assistentes?.primeiro[0] && 
+          artilheiros?.terceiro[0] && 
+          <Divider/>
+        }
+        {
+          assistentes?.primeiro[0] &&
           <div>
              Assistente(s)
              <div style={{display:"flex", margin:"0px 10px 10px 10px",flexWrap:"wrap"}}>
@@ -277,7 +264,10 @@ export default function CardPremiacao() {
              </div>
           </div>
         }
-        <Divider/>
+        {
+          assistentes?.primeiro[0] &&
+          <Divider/>
+        }
         {
           assistentes?.segundo[0] && 
           <div>
@@ -311,7 +301,10 @@ export default function CardPremiacao() {
              </div>
           </div>
         }
-        <Divider/>
+        {
+          assistentes?.segundo[0] &&
+          <Divider/>
+        }
         {
           assistentes?.terceiro[0] && 
           <div>
@@ -347,7 +340,10 @@ export default function CardPremiacao() {
              </div>
           </div>
         }
-        <Divider/>
+        {
+          assistentes?.terceiro[0] &&
+          <Divider/>
+        }
         {
           dados?.vitorias && 
           <div>
@@ -365,7 +361,10 @@ export default function CardPremiacao() {
              </div>
           </div>
         }
-        <Divider/>
+        {
+          dados?.vitorias &&
+          <Divider/>
+        }
         {
           dados?.empates && 
           <div>
@@ -383,7 +382,10 @@ export default function CardPremiacao() {
              </div>
           </div>
         }
-        <Divider/>
+        {
+          dados?.empates &&
+          <Divider/>
+        }
         {
           dados?.gols && 
           <div>

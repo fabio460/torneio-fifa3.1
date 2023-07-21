@@ -39,25 +39,29 @@ export default function TelaPrincipal({usuario}:{usuario:usuarioType}) {
      React.useEffect(()=>{
        dispatch(getUsuario(usuario))
      },[dispatch, usuario])
+     const corDeFundo = "#f5f5f5"
   return (
-    <React.Fragment >
-      <CssBaseline />
-      <ElevationScroll >
-         <Header/>
-      </ElevationScroll>
-      <Toolbar />
-      <Container >
-        <Box sx={{ my: 2 }}>
-          <div className={style.mainUp}>
-            <CardTorneio/>
-            <CardPremiacao/>
-           </div>
-           <div>
-            <CardParticipantes/>
-           </div>
-           
-        </Box>
-      </Container>
-    </React.Fragment>
+    <div style={{background:corDeFundo}}>
+      <React.Fragment>
+        <CssBaseline />
+
+        <ElevationScroll >
+          <Header/>
+        </ElevationScroll>
+        <Toolbar />
+        <Container sx={{background:corDeFundo}}>
+          <Box sx={{ my: 2 }}>
+            <div className={style.mainUp}>
+              <CardTorneio/>
+              <CardPremiacao/>
+            </div>
+            <div>
+              <CardParticipantes/>
+            </div>
+            
+          </Box>
+        </Container>
+      </React.Fragment>
+    </div>
   );
 }
