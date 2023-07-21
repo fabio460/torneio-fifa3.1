@@ -356,7 +356,7 @@ export default function CardPremiacao() {
               {
                 dados?.vitorias?.map((elem, key)=>{
                   return (
-                    <div>
+                    <div key={key}>
                       {elem.participante} - {elem.dado} vitória{elem.dado && elem.dado > 1 && <span>s</span>}
                     </div>
                   )
@@ -374,7 +374,7 @@ export default function CardPremiacao() {
               {
                 dados?.empates?.map((elem, key)=>{
                   return (
-                    <div>
+                    <div key={key}>
                       {elem.participante} - {elem.dado} empate{elem.dado && elem.dado > 1 && <span>s</span>}
                     </div>
                   )
@@ -392,7 +392,7 @@ export default function CardPremiacao() {
               {
                 dados?.gols?.map((elem, key)=>{
                   return (
-                    <div>
+                    <div key={key}>
                       {elem.participante} - {elem.dado} gol{elem.dado && elem.dado > 1 && <span>s</span>}
                     </div>
                   )
