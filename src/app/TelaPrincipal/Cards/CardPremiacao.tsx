@@ -4,9 +4,13 @@ import { useAppSelector } from '@/redux/hookes'
 
 export default function CardPremiacao() {
   const campeoes = useAppSelector(state=>state.colocaçãoReducer.colocacao)
+  
+  
   const artilheiros = useAppSelector(state=>state.artilheirosReducer.artilheiros)
   const assistentes = useAppSelector(state=>state.assistentesReducer.assistente)
+  const dados = useAppSelector(state=>state.golsEmpVitoriasReducer.golsEmpVitorias)
 
+  
   return (
     <div className={styled.cardTorneioMain}>
       <h2 style={{textAlign:"center"}}>Premiações</h2>

@@ -6,8 +6,10 @@ import btnVisibleDeleteParticipantesReducer from './reducers/btnVisibleDeletePar
 import colocaçãoReducer from './reducers/colocaçãoReducer'
 import artilheirosReducer from './reducers/artilheirosReducer'
 import assistentesReducer from './reducers/assistentesReducer'
+import golsEmpVitoriasReducer from './reducers/golsEmpVitoriasReducer'
 export const store = configureStore({
   reducer: {
+    golsEmpVitoriasReducer,
     assistentesReducer,
     artilheirosReducer,
     colocaçãoReducer,

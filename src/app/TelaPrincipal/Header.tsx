@@ -18,6 +18,7 @@ import VisibleBtnDeletarParticipantes from './visibleBtnDeletarParticipantes';
 import ModalColocacao from './Modais/modaisDeAppBar/modalColocacao';
 import ModalArtilharia from './Modais/modaisDeAppBar/modalArtilharia';
 import ModalAssistencia from './Modais/modaisDeAppBar/modalAssistencia';
+import ModalDadosDoJogo from './Modais/modaisDeAppBar/modalDadosDoJogo';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'sair'];
@@ -152,6 +153,12 @@ function Header() {
                 sx={{ my: 2, color: 'white', display: 'flex' }}
               >
                 <ModalAssistencia/>
+              </Button>
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'flex' }}
+              >
+                <ModalDadosDoJogo/>
               </Button>
           </Box>
 

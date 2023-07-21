@@ -11,6 +11,8 @@ import { useSelector } from 'react-redux';
 import { TextField } from '@mui/material';
 import { empates, gols, vitoria } from '../../../../../valoresDosPremios';
 import { checkedType, checkedTypes } from '@/Types';
+import { useAppDispatch, useAppSelector } from '@/redux/hookes';
+import { setGolsEmpVitorias } from '@/redux/reducers/golsEmpVitoriasReducer';
 
 
 type dadosType = {
@@ -18,7 +20,11 @@ type dadosType = {
   premio:number,
   dado?:number,
   tipoDeDado?:string,
-  participante?:string
+  participante?:string,
+  dadosDaApi:{
+    idParticipante:string,
+    premio:number,
+  }
 }
 
 const golsPremio = gols
@@ -30,16 +36,23 @@ export default function ModalDadosDoJogo() {
   const [vitorias, setvitorias] = React.useState<dadosType[]>([]);
   const [empates, setempates] = React.useState<dadosType[]>([]);
   
-  const participantes:checkedType[] = useSelector((state:any)=>state.participantesReducer.participantes)
+  const participantes= useAppSelector(state=>state.participantesCheckedReducer.paticipantesChecked)
   
   const handleChangegols = (event: any, data:checkedTypes) => {
     let gol = event.target.value 
     let golsFilter = []
+    let dadosDaApi = []
     if (gol.trim() === '') {
       golsFilter = gols.filter((e)=>{
         if ( !e.idParticipante.includes(data.participante.id)) {
           return e
         }
+      })
+      golsFilter.map((g, key)=>{
+        dadosDaApi.push({
+          idParticipante:g.idParticipante,
+          premio:g.premio
+        })
       })
       setgols(golsFilter)
       return null
@@ -54,7 +67,11 @@ export default function ModalDadosDoJogo() {
       premio:parseInt(gol || "")*golsPremio,
       dado:gol,
       participante:data.participante.nome,
-      tipoDeDado:"gol"
+      tipoDeDado:"gol",
+      dadosDaApi:{
+        idParticipante:data.participante.id,
+        premio:parseInt(gol || "")*golsPremio,
+      }
     }])
   };
 
@@ -81,7 +98,11 @@ export default function ModalDadosDoJogo() {
       premio:parseInt(vitoria || "")*vitoriasPremio,
       dado:vitoria,
       participante:data.participante.nome,
-      tipoDeDado:"vitoria"
+      tipoDeDado:"vitoria",
+      dadosDaApi:{
+        idParticipante:data.participante.id,
+        premio:parseInt(vitoria || "")*vitoriasPremio,
+      }
     }])
   };
   const handleChangeempates = (event: any, data:any) => {
@@ -106,7 +127,11 @@ export default function ModalDadosDoJogo() {
       premio:parseInt(empate || "")*empatesPremio,
       dado:empate,
       participante:data.participante.nome,
-      tipoDeDado:"empate"
+      tipoDeDado:"empate",
+      dadosDaApi:{
+        idParticipante:data.participante.id,
+        premio:parseInt(empate || "")*empatesPremio,
+      }
     }])
   };
 
@@ -118,16 +143,16 @@ export default function ModalDadosDoJogo() {
     setOpen(true);
   };
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const handleClose = () => {
     setOpen(false);
   };
+
   
   const adicionar = ()=>{
-    dispatch({
-      type:"dados",
-      payload:{dados:{gols,vitorias,empates}}
-    })
+    dispatch(setGolsEmpVitorias({
+      gols,vitorias,empates
+    }))
     handleClose()
   }
   const dialogStyle = {
