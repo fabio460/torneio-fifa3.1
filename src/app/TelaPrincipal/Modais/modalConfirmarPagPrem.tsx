@@ -5,26 +5,20 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { selecionadosType, usuarioType } from '../../../Types';
-import { useSelector } from 'react-redux';
+import { premiadosType } from '../../../Types';
 import CarregandoBtn from '../../../carregandoBtn';
-import { getPremiados } from '../../services';
 import { pagarPremiacoesApi } from '@/APIs/pagamentosApi';
-import { adicionarEstatisticaApi } from '@/APIs/estatisticasApi';
+import { useAppSelector } from '@/redux/hookes';
 
-export default function ModalConfirmarPagamentoPremiacao({usuario, icone}:{
-   usuario:usuarioType | undefined,
-   icone:boolean
-  }) {
+export default function ModalConfirmarPagamentoPremiacao({icone}:{icone:boolean}) {
 
   const [open, setOpen] = React.useState(false);
   const [carregandoPremio, setCarregandoPremio] = React.useState(false)
-  const colocacao:selecionadosType = useSelector((state:any)=>state.colocacaoReducer.colocacao)
-  const artilheiros:any = useSelector((state:any)=>state.artilhariaReducer.artilheiros)
-  const assistentes:any = useSelector((state:any)=>state.assisteciaReducer.assistentes)
-  const dadosDoJogo:any = useSelector((state:any)=>state.golsEmpVitoriasReducer.dados)
-  const torneioReducer = useSelector((state:any)=>state.torneioReducer.torneio)
-  const participantes = useSelector((state:any)=>state.participantesReducer.participantes)
+  const colocacao = useAppSelector(state=>state.colocaçãoReducer.colocacao)
+  const artilheiros = useAppSelector(state=>state.artilheirosReducer.artilheiros)
+  const assistentes = useAppSelector(state=>state.assistentesReducer.assistente)
+  const dadosDoJogo = useAppSelector(state=>state.golsEmpVitoriasReducer.golsEmpVitorias)
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -33,37 +27,63 @@ export default function ModalConfirmarPagamentoPremiacao({usuario, icone}:{
   };
 
 
+  let premiados:premiadosType = []
+  colocacao?.primeiro?.dadosDaApi && premiados.push(colocacao?.primeiro?.dadosDaApi)
+  colocacao?.segundo?.dadosDaApi && premiados.push(colocacao?.segundo?.dadosDaApi)
+  colocacao?.terceiro?.dadosDaApi && premiados.push(colocacao?.terceiro?.dadosDaApi)
+  colocacao?.quarto?.dadosDaApi && premiados.push(colocacao?.quarto?.dadosDaApi)
+  artilheiros?.primeiro.map(a=>{
+    a?.dadosDaApi && premiados.push(a?.dadosDaApi)
+  })
+  artilheiros?.segundo?.map(a=>{
+    a?.dadosDaApi && premiados.push(a?.dadosDaApi)
+  })
+  artilheiros?.terceiro?.map(a=>{
+    a?.dadosDaApi && premiados.push(a?.dadosDaApi)
+  })
+  artilheiros?.quarto?.map(a=>{
+    a?.dadosDaApi && premiados.push(a?.dadosDaApi)
+  })
+  assistentes?.primeiro.map(a=>{
+    a?.dadosDaApi && premiados.push(a?.dadosDaApi)
+  })
+  assistentes?.segundo?.map(a=>{
+    a?.dadosDaApi && premiados.push(a?.dadosDaApi)
+  })
+  assistentes?.terceiro?.map(a=>{
+    a?.dadosDaApi && premiados.push(a?.dadosDaApi)
+  })
+  assistentes?.quarto?.map(a=>{
+    a?.dadosDaApi && premiados.push(a?.dadosDaApi)
+  })
+  dadosDoJogo?.gols.map(g=>{
+   g?.dadosDaApi && premiados.push(g?.dadosDaApi)
+  })
+  dadosDoJogo?.empates.map(g=>{
+   g?.dadosDaApi && premiados.push(g?.dadosDaApi)
+  })
+  dadosDoJogo?.vitorias.map(g=>{
+   g?.dadosDaApi && premiados.push(g?.dadosDaApi)
+  })
   const pagarPremiacao =async ()=>{
     setCarregandoPremio(true)
-    let premiados:any = []
-    premiados = getPremiados(colocacao,artilheiros,assistentes,dadosDoJogo)
-    if (premiados.length === 0) {
-       alert("Não há dados selecionados!")
-       setCarregandoPremio(false)
-       return null 
-    }
-    const assistentesArray:any = []
-    assistentes.primeiro?.map((e:any)=>{
-      assistentesArray.push(e.nome)
-    })
-    const artilheirosArray:any = []
-    artilheiros.primeiro?.map((e:any)=>{
-      artilheirosArray.push(e.nome)
-    })
+
      const res =await pagarPremiacoesApi(premiados)
-     if (artilheiros.primeiro || assistentes.primeiro || colocacao.primeiro) {     
-       const resSta = await adicionarEstatisticaApi(
-        artilheirosArray,
-        assistentesArray,
-        colocacao.primeiro ? colocacao.primeiro.nome: "",
-        usuario?.torneio[torneioReducer].id || ''
-        )
-       alert(res)
-       window.location.reload()
+     alert(res)
+     window.location.reload()
+     if (artilheiros?.primeiro || assistentes?.primeiro || colocacao?.primeiro) {     
+      //  const resSta = await adicionarEstatisticaApi(
+      //   artilheirosArray,
+      //   assistentesArray,
+      //   colocacao.primeiro ? colocacao.primeiro.nome: "",
+      //   usuario?.torneio[torneioReducer].id || ''
+      //   )
      }else{
       alert("Não há participantes selecionados!")
       setCarregandoPremio(false)
      }
+    setCarregandoPremio(false)
+
   }
 
   const btnPagamentosStyle ={
@@ -83,7 +103,7 @@ export default function ModalConfirmarPagamentoPremiacao({usuario, icone}:{
            sx={btnPagamentosStyle} 
            color='success' size="small" variant='contained'
            onClick={handleClickOpen}
-           disabled={participantes.length === 0 ? true : false}
+           disabled={premiados.length === 0 ? true : false}
         >Pagar premiação</Button>
       }
       <Dialog

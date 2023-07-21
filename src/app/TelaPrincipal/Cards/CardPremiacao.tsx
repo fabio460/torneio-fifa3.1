@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from "../telaPrincipalStyle.module.css"
 import { useAppSelector } from '@/redux/hookes'
+import ModalConfirmarPagamentoPremiacao from '../Modais/modalConfirmarPagPrem'
 
 export default function CardPremiacao() {
   const campeoes = useAppSelector(state=>state.colocaçãoReducer.colocacao)
@@ -57,7 +58,7 @@ export default function CardPremiacao() {
           </div>
         })
       }
-      
+      <ModalConfirmarPagamentoPremiacao icone={false}/>
     </div>
   )
 }

@@ -79,7 +79,7 @@ export interface torneioType {
 
 export type premiadosType = {
   idParticipante:string,
-  debito:number
+  premio:number
 }[]
 
 export type pagadoresType = {
