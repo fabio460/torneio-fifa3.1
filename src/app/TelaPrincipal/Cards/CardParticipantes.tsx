@@ -1,5 +1,5 @@
 import { ListaDeParticipantesDoTorneioSelecionado, calculaFolha, formatoMonetario } from "@/app/services"
-import { useAppSelector } from "@/redux/hookes"
+
 import { Button } from "@mui/material"
 import ModalDeletarParticipantes from "../Modais/modalDeletarParticipantes"
 
@@ -26,7 +26,6 @@ const posts = [
   
   export default function CardParticipantes() {
     const participantes = ListaDeParticipantesDoTorneioSelecionado()
-
     return (
       <div className="">
         <div className="">
@@ -36,17 +35,17 @@ const posts = [
 
           <div className="mx-auto mt-1 grid max-w-2xl sm:mx-0 grid-cols-1 gap-x-4 gap-y-4 border-t border-gray-200 pt-5 sm:mt-1 sm:pt-1 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {participantes?.map((post) => (
-              <article key={post.id} className="bg-white p-3 rounded-lg flex max-w-xl flex-col items-start justify-between">
+              <div key={post.id} className="bg-white p-3 rounded-lg flex max-w-xl flex-col items-start justify-between">
                 <div style={{display:"flex", justifyContent:"space-between", width:"100%"}}>
                   <div style={{display:"flex"}}>
                     <img src={post.emblemaDoTime} alt="" className="h-10 w-10 rounded-full bg-gray-50" />
                     <div className="text-sm leading-6 mx-2">
-                      <p className="font-semibold text-gray-900">
-                        <p>
+                      <div className="font-semibold text-gray-900">
+                        <div>
                           {post.time}
-                        </p>
-                      </p>
-                      <p className="text-gray-600">{post.nome}</p>
+                        </div>
+                      </div>
+                      <div className="text-gray-600">{post.nome}</div>
                     </div>
                   </div>
                   <div className="ms-auto">
@@ -59,13 +58,13 @@ const posts = [
                       Saldo {formatoMonetario(post?.saldo)}
                     </div>
                   </h3>
-                  <p>Folha {calculaFolha((post.jogadores))}</p>
+                  <div>Folha {calculaFolha((post.jogadores))}</div>
                   <Button variant="outlined" color="secondary" sx={{width:"100%", mt:1}}>gerenciar elenco</Button>
                   <Button variant="outlined" color="success" sx={{width:"100%", mt:1}}>comprar jogadore</Button>                  
-                  <p className="mt-1 line-clamp-3 text-sm leading-6 text-gray-600">{post.jogadores.length} jogadores</p>
+                  <div className="mt-1 line-clamp-3 text-sm leading-6 text-gray-600">{post.jogadores.length} jogadores</div>
                 </div>
               
-              </article>
+              </div>
             ))}
           </div>
         </div>

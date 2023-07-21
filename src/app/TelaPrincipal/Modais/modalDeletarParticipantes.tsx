@@ -10,6 +10,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { IconButton } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { deletarParticipantesApi } from '@/APIs/participantesApi';
+import { useAppSelector } from '@/redux/hookes';
 
 
 export default function ModalDeletarParticipantes({elenco}:{elenco:participantesType}) {
@@ -19,7 +20,8 @@ export default function ModalDeletarParticipantes({elenco}:{elenco:participantes
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value);
   };
-  
+  const btnDeletePartcipantesVisible = useAppSelector(state=>state.btnVisibleDeleteParticipantesReducer.btnDeleteVisible)
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -37,7 +39,7 @@ export default function ModalDeletarParticipantes({elenco}:{elenco:participantes
   
   return (
     <div>
-      <IconButton  size='small' onClick={handleClickOpen}>
+      <IconButton  size='small' onClick={handleClickOpen} disabled={!btnDeletePartcipantesVisible}>
         <DeleteOutlineIcon />
       </IconButton>
       <Dialog

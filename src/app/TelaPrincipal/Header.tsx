@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import BtnLogin from '../BtnLogin';
 import { useSession } from 'next-auth/react';
+import VisibleBtnDeletarParticipantes from './visibleBtnDeletarParticipantes';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'sair'];
@@ -37,6 +38,19 @@ function Header() {
     setAnchorElUser(null);
   };
   const {data} = useSession()
+
+  const MenuLeft = ()=>{
+    return(
+      <div>
+      <MenuItem onClick={handleCloseNavMenu}>
+        <Typography textAlign="center">item 2</Typography>
+      </MenuItem>
+      <MenuItem onClick={handleCloseNavMenu}>
+        <Typography textAlign="center">item 1</Typography>
+      </MenuItem>
+      </div>
+    )
+  }
   return (
     <AppBar position="fixed">
       <Container maxWidth="xl">
@@ -89,11 +103,13 @@ function Header() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {/* {pages.map((page) => (
+              ))} */}
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                    item
+                  </Typography>
                 </MenuItem>
-              ))}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -116,15 +132,14 @@ function Header() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {/* {pages.map((page) => (
+            ))} */}
               <Button
-                key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                item
               </Button>
-            ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -155,6 +170,10 @@ function Header() {
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography textAlign="center" component={"div"}><BtnLogin/></Typography>
                 </MenuItem>
+                <MenuItem>
+                    <VisibleBtnDeletarParticipantes/>
+                </MenuItem>
+
             </Menu>
           </Box>
         </Toolbar>

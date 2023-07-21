@@ -55,6 +55,7 @@ export default function TelaPrincipal({usuario}:{usuario:usuarioType}) {
            <div>
             <CardParticipantes/>
            </div>
+           
         </Box>
       </Container>
     </React.Fragment>
