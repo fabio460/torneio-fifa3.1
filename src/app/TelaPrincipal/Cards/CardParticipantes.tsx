@@ -2,6 +2,7 @@ import { ListaDeParticipantesDoTorneioSelecionado, calculaFolha, formatoMonetari
 
 import { Button } from "@mui/material"
 import ModalDeletarParticipantes from "../Modais/modalDeletarParticipantes"
+import CustomizedTooltips from "../customizedTooltips"
 
 const posts = [
     {
@@ -61,7 +62,7 @@ const posts = [
                   <div>Folha {calculaFolha((post.jogadores))}</div>
                   <Button variant="outlined" color="secondary" sx={{width:"100%", mt:1}}>gerenciar elenco</Button>
                   <Button variant="outlined" color="success" sx={{width:"100%", mt:1}}>comprar jogadore</Button>                  
-                  <div className="mt-1 line-clamp-3 text-sm leading-6 text-gray-600">{post.jogadores.length} jogadores</div>
+                  <CustomizedTooltips jogadores={post.jogadores}/>
                 </div>
               
               </div>
