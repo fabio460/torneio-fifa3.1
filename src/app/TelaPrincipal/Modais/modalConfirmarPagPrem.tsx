@@ -8,7 +8,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { premiadosType } from '../../../Types';
 import CarregandoBtn from '../../../carregandoBtn';
 import { pagarPremiacoesApi } from '@/APIs/pagamentosApi';
-import { useAppSelector } from '@/redux/hookes';
+import { useAppDispatch, useAppSelector } from '@/redux/hookes';
+import { setPremiados } from '@/redux/reducers/premiadosReducer';
 
 export default function ModalConfirmarPagamentoPremiacao({icone}:{icone:boolean}) {
 
@@ -65,6 +66,12 @@ export default function ModalConfirmarPagamentoPremiacao({icone}:{icone:boolean}
   dadosDoJogo?.vitorias.map(g=>{
    g?.dadosDaApi && premiados.push(g?.dadosDaApi)
   })
+  const dispatch = useAppDispatch()
+  React.useEffect(()=>{
+    dispatch(setPremiados(premiados))
+  },[colocacao,artilheiros,assistentes, dadosDoJogo])
+  const premiado = useAppSelector(state => state.premiadosReducer.premiados)
+  console.log(premiado)
   const pagarPremiacao =async ()=>{
     setCarregandoPremio(true)
 

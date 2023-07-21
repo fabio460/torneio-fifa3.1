@@ -3,8 +3,11 @@ import styled from "../telaPrincipalStyle.module.css"
 import { useAppSelector } from '@/redux/hookes'
 import ModalConfirmarPagamentoPremiacao from '../Modais/modalConfirmarPagPrem'
 import ModalConfirmaPagamentoFolha from '../Modais/modalConfirPagFolha'
+import ScrollComponents from '@/app/ScrollComponent'
+import BtnScroll from '../btnScroll'
 
 export default function CardPremiacao() {
+  const participantes = useAppSelector(state=>state.participantesCheckedReducer.paticipantesChecked)
   const campeoes = useAppSelector(state=>state.colocaçãoReducer.colocacao)
   const artilheiros = useAppSelector(state=>state.artilheirosReducer.artilheiros)
   const assistentes = useAppSelector(state=>state.assistentesReducer.assistente)
@@ -62,6 +65,9 @@ export default function CardPremiacao() {
         <ModalConfirmarPagamentoPremiacao icone={false}/>
         <ModalConfirmaPagamentoFolha icone={false}/>
       </div>
+        <ScrollComponents >
+          <BtnScroll/>
+        </ScrollComponents>
     </div>
   )
 }

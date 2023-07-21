@@ -7,8 +7,10 @@ import colocaçãoReducer from './reducers/colocaçãoReducer'
 import artilheirosReducer from './reducers/artilheirosReducer'
 import assistentesReducer from './reducers/assistentesReducer'
 import golsEmpVitoriasReducer from './reducers/golsEmpVitoriasReducer'
+import premiadosReducer from './reducers/premiadosReducer'
 export const store = configureStore({
   reducer: {
+    premiadosReducer,
     golsEmpVitoriasReducer,
     assistentesReducer,
     artilheirosReducer,
