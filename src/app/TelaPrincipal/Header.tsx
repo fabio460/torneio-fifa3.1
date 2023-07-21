@@ -112,6 +112,15 @@ function Header() {
                 <MenuItem onClick={handleCloseNavMenu}>
                    <ModalColocacao/>
                 </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                   <ModalArtilharia/>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                   <ModalAssistencia/>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                   <ModalDadosDoJogo/>
+                </MenuItem>
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
