@@ -10,7 +10,7 @@ import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
-
+import Image from 'next/image'
 export default function CardPremiacao() {
   const participantes = useAppSelector(state=>state.participantesCheckedReducer.paticipantesChecked)
   const colocacao = useAppSelector(state=>state.colocaçãoReducer.colocacao)
@@ -56,7 +56,6 @@ export default function CardPremiacao() {
 
   return (
     <div className={Styled.cardTorneioMain}>
-      
       <div>
         <h1 className={Styled.titlePremiacoes}>Premiações</h1>
         {
@@ -65,8 +64,8 @@ export default function CardPremiacao() {
             <div>Campeão</div>
             <div>
               <div className="flex gap-x-4 ml-6 mt-1 mb-4">
-                1° <img className="h-7 w-7 flex-none rounded-full bg-gray-50" 
-                 src={colocacao.primeiro.dados.emblemaDoTime} alt="" />
+                1° <Image className="h-7 w-7 flex-none rounded-full bg-gray-50" 
+                 src={colocacao.primeiro.dados.emblemaDoTime as string} alt="" />
               <div className="min-w-0 flex-auto">
                 <div className="text-sm font-semibold leading-3 text-gray-900">
                   {colocacao.primeiro.nome}
@@ -86,8 +85,8 @@ export default function CardPremiacao() {
             <div>Vice campeão</div>
             <div>
               <div className="flex gap-x-4 ml-6 mt-1 mb-4">
-                2° <img className="h-7 w-7 flex-none rounded-full bg-gray-50" 
-                 src={colocacao.segundo.dados.emblemaDoTime} alt="" />
+                2° <Image className="h-7 w-7 flex-none rounded-full bg-gray-50" 
+                 src={colocacao.segundo.dados.emblemaDoTime as string} alt="" />
               <div className="min-w-0 flex-auto">
                 <div className="text-sm font-semibold leading-3 text-gray-900">
                   {colocacao.segundo.nome}
@@ -107,8 +106,8 @@ export default function CardPremiacao() {
             <div>Terceiro colocado</div>
             <div>
               <div className="flex gap-x-4 ml-6 mt-1 mb-4">
-                3° <img className="h-7 w-7 flex-none rounded-full bg-gray-50" 
-                 src={colocacao.terceiro.dados.emblemaDoTime} alt="" />
+                3° <Image className="h-7 w-7 flex-none rounded-full bg-gray-50" 
+                 src={colocacao.terceiro.dados.emblemaDoTime  as string} alt="" />
               <div className="min-w-0 flex-auto">
                 <div className="text-sm font-semibold leading-3 text-gray-900">
                   {colocacao.terceiro.nome}
@@ -128,8 +127,8 @@ export default function CardPremiacao() {
             <div>Quarto colocado</div>
             <div>
               <div className="flex gap-x-4 ml-6 mt-1 mb-4">
-                4° <img className="h-7 w-7 flex-none rounded-full bg-gray-50" 
-                 src={colocacao.quarto.dados.emblemaDoTime} alt="" />
+                4° <Image className="h-7 w-7 flex-none rounded-full bg-gray-50" 
+                 src={colocacao.quarto.dados.emblemaDoTime as string} alt="" />
               <div className="min-w-0 flex-auto">
                 <div className="text-sm font-semibold leading-3 text-gray-900">
                   {colocacao.quarto.dados.time}
@@ -156,10 +155,10 @@ export default function CardPremiacao() {
                         overlap="circular"
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                         badgeContent={
-                          <SmallAvatar alt="Remy Sharp" src={elem.participante.participante.emblemaDoTime} />
+                          <SmallAvatar alt="Remy Sharp" src={elem.participante.participante.emblemaDoTime as string} />
                         }
                       >
-                        <Avatar alt="Travis Howard" src={elem.jogador.imagemDoJogador} />
+                        <Avatar alt="Travis Howard" src={elem.jogador.imagemDoJogador as string} />
                       </Badge>
                       <div className="min-w-0 flex-auto">
                         <div className="text-sm font-semibold leading-3 text-gray-900">
@@ -190,10 +189,10 @@ export default function CardPremiacao() {
                         overlap="circular"
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                         badgeContent={
-                          <SmallAvatar alt="Remy Sharp" src={elem.participante.participante.emblemaDoTime} />
+                          <SmallAvatar alt="Remy Sharp" src={elem.participante.participante.emblemaDoTime as string} />
                         }
                       >
-                        <Avatar alt="Travis Howard" src={elem.jogador.imagemDoJogador} />
+                        <Avatar alt="Travis Howard" src={elem.jogador.imagemDoJogador as string} />
                       </Badge>
                       <div className="min-w-0 flex-auto">
                         <div className="text-sm font-semibold leading-3 text-gray-900">
@@ -224,10 +223,10 @@ export default function CardPremiacao() {
                         overlap="circular"
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                         badgeContent={
-                          <SmallAvatar alt="Remy Sharp" src={elem.participante.participante.emblemaDoTime} />
+                          <SmallAvatar alt="Remy Sharp" src={elem.participante.participante.emblemaDoTime as string} />
                         }
                       >
-                        <Avatar alt="Travis Howard" src={elem.jogador.imagemDoJogador} />
+                        <Avatar alt="Travis Howard" src={elem.jogador.imagemDoJogador as string} />
                       </Badge>
                       <div className="min-w-0 flex-auto">
                         <div className="text-sm font-semibold leading-3 text-gray-900">
@@ -258,10 +257,10 @@ export default function CardPremiacao() {
                         overlap="circular"
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                         badgeContent={
-                          <SmallAvatar alt="Remy Sharp" src={elem.participante.participante.emblemaDoTime} />
+                          <SmallAvatar alt="Remy Sharp" src={elem.participante.participante.emblemaDoTime as string} />
                         }
                       >
-                        <Avatar alt="Travis Howard" src={elem.jogador.imagemDoJogador} />
+                        <Avatar alt="Travis Howard" src={elem.jogador.imagemDoJogador as string} />
                       </Badge>
                       <div className="min-w-0 flex-auto">
                         <div className="text-sm font-semibold leading-3 text-gray-900">
@@ -292,10 +291,10 @@ export default function CardPremiacao() {
                         overlap="circular"
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                         badgeContent={
-                          <SmallAvatar alt="Remy Sharp" src={elem.participante.participante.emblemaDoTime} />
+                          <SmallAvatar alt="Remy Sharp" src={elem.participante.participante.emblemaDoTime as string} />
                         }
                       >
-                        <Avatar alt="Travis Howard" src={elem.jogador.imagemDoJogador} />
+                        <Avatar alt="Travis Howard" src={elem.jogador.imagemDoJogador as string} />
                       </Badge>
                       <div className="min-w-0 flex-auto">
                         <div className="text-sm font-semibold leading-3 text-gray-900">
@@ -328,10 +327,10 @@ export default function CardPremiacao() {
                         overlap="circular"
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                         badgeContent={
-                          <SmallAvatar alt="Remy Sharp" src={elem.participante.participante.emblemaDoTime} />
+                          <SmallAvatar alt="Remy Sharp" src={elem.participante.participante.emblemaDoTime as string} />
                         }
                       >
-                        <Avatar alt="Travis Howard" src={elem.jogador.imagemDoJogador} />
+                        <Avatar alt="Travis Howard" src={elem.jogador.imagemDoJogador as string} />
                       </Badge>
                       <div className="min-w-0 flex-auto">
                         <div className="text-sm font-semibold leading-3 text-gray-900">
